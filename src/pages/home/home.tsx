@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "../../components/Header";
+import { Analytics } from "@vercel/analytics/react"
 import { Link as ScrollLink } from "react-scroll"; // Importing Link from react-scroll
 import {
   FiFolder,
@@ -63,6 +64,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#121212] text-white">
+      <Analytics />
       <Layout />
       <motion.div
         className="max-w-screen-lg mx-auto flex items-center justify-between p-12 rounded-lg mt-8"
