@@ -112,7 +112,7 @@ export default function Home() {
               <span>Projects</span>
             </ScrollLink>
             <Link
-              to="/Isidro, Earl Tristan - Resume.pdf"
+              to="/Earl Tristan Isidro - Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-8 py-1.5 bg-gray-800 text-white text-md font-medium rounded-full hover:bg-gray-700 transition"
