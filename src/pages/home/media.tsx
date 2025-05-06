@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 
 // Image file paths
 const images = [
-  "IMG_8044.jpg",
-  "IMG_6864.jpg",
-  "IMG_6782.jpg",
-  "IMG_1418.jpg",
-  "IMG_6458.jpg",
-  "IMG_1003.jpg",
+  "IMG_8044.webp",
+  "IMG_6864.webp",
+  "IMG_6782.webp",
+  "IMG_1418.webp",
+  "IMG_6458.webp",
+  "IMG_1003.webp",
 ];
 
 const gridSizes = [

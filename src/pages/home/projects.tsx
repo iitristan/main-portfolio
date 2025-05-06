@@ -3,9 +3,42 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    title: "OSAQA",
+    description: "Personal collaborative project for UST-OSA's queueing system",
+    technologies: ["Next.js", "Postgres", "TypeScript", "Tailwind"],
+    image: "/OSAQA.png",
+    alt: "OSAQA Project Image",
+    link: "https://github.com/iitristan/",
+  },
+  {
+    title: "Patient Management System",
+    description:
+      "Comprehensive Healthcare Management System (Freelance project for Nursing students).",
+    technologies: ["Next.js", "Postgres", "TypeScript", "Tailwind"],
+    image: "/PatientCare.png",
+    alt: "Nursing Project Image",
+    link: "https://health-system-seven.vercel.app/",
+  },
+  {
+    title: "Kasama",
+    description:
+      "Website for finding roommates and dormitories (client's entrepreneurial project).",
+    technologies: ["Next.js", "Postgres", "TypeScript", "Tailwind"],
+    image: "/KasamaPH.png",
+    alt: "KasamaPH Project Image",
+    link: "https://kasamaph.vercel.app/home",
+  },
+  {
     title: "OSAMS",
     description: "Capstone project for asset management.",
-    technologies: ["Google API", "Twilio", "React", "JavaScript", "PostgreSQL", "Tailwind"],
+    technologies: [
+      "Google API",
+      "Twilio",
+      "React",
+      "JavaScript",
+      "PostgreSQL",
+      "Tailwind",
+    ],
     image: "/osams_img.png",
     alt: "OSAMS Project Image",
     link: "https://github.com/iitristan/",
@@ -21,7 +54,14 @@ const projects = [
   {
     title: "GameFly",
     description: "Video game data app with wishlist.",
-    technologies: ["IGDB API", "React", "JavaScript", "Tailwind", "MySQL", "Node.js"],
+    technologies: [
+      "IGDB API",
+      "React",
+      "JavaScript",
+      "Tailwind",
+      "MySQL",
+      "Node.js",
+    ],
     image: "/gamefly_img.png",
     alt: "GameFly Project Image",
     link: "https://github.com/iitristan/steamgamingblog",

@@ -10,7 +10,9 @@ export default function Header() {
         <div className="flex flex-col space-y-1">
           <h2 className="text-2xl font-semibold">Earl Tristan Isidro</h2>
           <div className="text-wrap">
-            <p className="text-gray-400 text-sm">Full Stack Web Developer</p>
+            <p className="text-gray-400 text-sm">
+              UI/UX Designer and Full Stack Web Developer
+            </p>
           </div>
         </div>
 

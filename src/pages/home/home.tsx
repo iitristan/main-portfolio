@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "../../components/Header";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import { Link as ScrollLink } from "react-scroll"; // Importing Link from react-scroll
 import {
   FiFolder,
@@ -94,9 +94,9 @@ export default function Home() {
             className="text-lg font-normal"
             variants={lineVariants} // Animate paragraph after heading lines
           >
-            A full-stack web developer working with people who develop and
-            innovate responsive and progressive web applications that could help
-            the community.
+            A full-stack web developer and a UI/UX Designer working with people
+            who develop and innovate responsive and progressive web applications
+            that could help the community.
           </motion.p>
 
           {/* New Button Section */}
@@ -113,15 +113,15 @@ export default function Home() {
               <FiFolder size={16} />
               <span>Projects</span>
             </ScrollLink>
-            <Link
-              to="/Earl Tristan Isidro - Resume.pdf"
+            <a
+              href="/Earl Tristan Isidro - Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-8 py-1.5 bg-gray-800 text-white text-md font-medium rounded-full hover:bg-gray-700 transition"
             >
               <FiDownload size={16} />
               <span>Resume</span>
-            </Link>
+            </a>
           </motion.div>
 
           <motion.ul
@@ -217,8 +217,8 @@ export default function Home() {
         <div className="max-w-screen-lg mx-auto flex justify-around text-center text-white">
           {[
             { value: "2", label: "GitHub Followers" },
-            { value: "28", label: "GitHub Repositories" },
-            { value: "5", label: "Private Repositories" },
+            { value: "33", label: "GitHub Repositories" },
+            { value: "10", label: "Private Repositories" },
           ].map((stat, index) => (
             <motion.div
               key={index}
@@ -288,16 +288,16 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">Hello!</h2>
             <p className="text-lg text-gray-300 mb-6">
               Hi! I'm Tristan, a fourth-year Information Technology student
-              specializing in Website and Mobile Development at the University
-              of Santo Tomas. I am passionate about creating impactful,
-              user-focused applications and am always eager to learn and grow in
-              my field.
+              specializing in Website and Mobile Development graduating from the
+              University of Santo Tomas. Experienced in UI/UX, I am passionate
+              about creating impactful, user-focused applications and am always
+              eager to learn and grow in my field.
             </p>
             <h2 className="text-2xl font-semibold mb-4">My Goal</h2>
             <p className="text-lg text-gray-300 mb-8">
-              I aspire to work as a full-stack web developer, collaborating with
-              teams to create innovative applications that improve daily lives
-              and make technology more accessible.
+              I work as a full-stack web developer, collaborating with clients
+              and teams to create innovative applications that improve daily
+              lives and make technology more accessible.
             </p>
             <div className="flex space-x-4 mb-10">
               <ScrollLink
@@ -319,7 +319,7 @@ export default function Home() {
                 <span>GitHub</span>
               </a>
               <a
-                href="/Isidro, Earl Tristan - Resume.pdf"
+                href="/Earl Tristan Isidro - Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 px-6 py-2 bg-gray-800 text-white text-md font-medium rounded-full hover:bg-gray-700 transition"
@@ -329,6 +329,64 @@ export default function Home() {
               </a>
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* Work Experience Section */}
+        <motion.div
+          className="max-w-screen-lg mx-auto mt-12 px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          <motion.h2
+            className="text-2xl font-bold mb-8 text-blue-400"
+            variants={itemVariants}
+          >
+            Work Experience
+          </motion.h2>
+
+          {/* Work Experience Entries */}
+          {[
+            {
+              title: "User Experience (UX) Intern – Home Credit Philippines",
+              period: "February 2025 – Present until June 2025",
+              details: [
+                "Edited and implemented images, banners, and other designs for the corporate website, adhering to design systems and brand guidelines.",
+                "Managed and created creative assets and designs for multiple internal teams.",
+                "Optimized website pages using Magnolia CMS to improve performance and user experience.",
+                "Conducted audits and generated reports on website design, functionality, and adherence to design principles.",
+              ],
+            },
+            {
+              title:
+                "Full-time Builder (HTF Project Administrative Support Specialist) – HumanDAO",
+              period: "August 2022 – April 2025",
+              details: [
+                "Coordinated onboarding processes for new assistants, including application reviews, role assignments, and orientation across platforms.",
+                "Managed daily task distribution for decentralized assistants, ensuring timely updates and follow-ups.",
+                "Provided multi-channel support via Discord tickets, email, and DMs; maintained documentation using Trello and Google Sheets.",
+                "Promoted HTF programs and HDAO initiatives through targeted social media outreach and Facebook advertising.",
+              ],
+            },
+          ].map((experience, index) => (
+            <motion.div
+              key={index}
+              className="bg-[#1E1E1E] p-6 mb-6 rounded-lg"
+              variants={itemVariants}
+            >
+              <div className="flex items-center mb-2">
+                <FiUserCheck className="text-blue-400 mr-2 text-xl" />
+                <h3 className="text-xl font-semibold">{experience.title}</h3>
+              </div>
+              <p className="text-gray-400 font-medium">{experience.period}</p>
+              <ul className="list-disc ml-5 mt-2 text-gray-400">
+                {experience.details.map((detail, i) => (
+                  <li key={i}>{detail}</li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Experience Section */}
@@ -343,7 +401,7 @@ export default function Home() {
             className="text-2xl font-bold mb-8 text-blue-400"
             variants={itemVariants}
           >
-            Leadership/Organization Experiences
+            University Extracurricular & Leadership Experience
           </motion.h2>
 
           {/* Experiences */}
