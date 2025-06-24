@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 import "./header.css";
 
 export default function Header() {
@@ -38,6 +39,14 @@ export default function Header() {
               >
                 Projects
               </Link>
+            </li>
+            <li>
+              <RouterLink
+                to="/internship"
+                className="cursor-pointer hover:text-gray-400 transition duration-200"
+              >
+                Internship
+              </RouterLink>
             </li>
             <li>
               <Link
