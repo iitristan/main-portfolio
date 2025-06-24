@@ -41,14 +41,6 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <RouterLink
-                to="/internship"
-                className="cursor-pointer hover:text-gray-400 transition duration-200"
-              >
-                Internship
-              </RouterLink>
-            </li>
-            <li>
               <Link
                 to="contact"
                 smooth={true}
