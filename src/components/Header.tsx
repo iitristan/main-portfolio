@@ -12,7 +12,7 @@ export default function Header() {
           <h2 className="text-2xl font-semibold">Earl Tristan Isidro</h2>
           <div className="text-wrap">
             <p className="text-gray-400 text-sm">
-              UI/UX Designer and Full Stack Web Developer
+              Product Designer and Website Developer
             </p>
           </div>
         </div>

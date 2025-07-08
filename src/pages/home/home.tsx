@@ -15,6 +15,7 @@ import {
   FiFacebook,
   FiMail,
   FiUserCheck,
+  FiX,
 } from "react-icons/fi"; // Importing icons
 import { motion } from "framer-motion";
 
@@ -25,10 +26,25 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     setLoaded(true); // Trigger animation on load
   }, []);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedImage]);
   const containerVariants = {
     hidden: { opacity: 1 },
     visible: {
@@ -67,41 +83,43 @@ export default function Home() {
       <Analytics />
       <Layout />
       <motion.div
-        className="max-w-screen-lg mx-auto flex items-center justify-between p-12 rounded-lg mt-8"
+        className="max-w-screen-lg mx-auto flex flex-col lg:flex-row items-center justify-between p-4 sm:p-8 lg:p-12 rounded-lg mt-4 lg:mt-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         {/* Text Section */}
         <motion.div
-          className="flex flex-col max-w-lg space-y-4 mr-16"
+          className="flex flex-col max-w-full lg:max-w-lg space-y-4 mr-0 lg:mr-16 mb-8 lg:mb-0 text-center lg:text-left"
           variants={containerVariants} // Apply stagger effect
         >
           <motion.div variants={lineVariants}>
-            <h1 className="text-5xl font-bold leading-tight -mb-4">
-              Bridging the gap
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight -mb-2 lg:-mb-4">
+              Product Designer &
             </h1>
           </motion.div>
           <motion.div variants={lineVariants}>
-            <h1 className="text-5xl font-bold leading-tight -mb-4">
-              between people and
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight -mb-2 lg:-mb-4">
+              Website Developer
             </h1>
           </motion.div>
           <motion.div variants={lineVariants}>
-            <h1 className="text-5xl font-bold leading-tight">their ideas.</h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+              driving impact.
+            </h1>
           </motion.div>
           <motion.p
-            className="text-lg font-normal"
+            className="text-base sm:text-lg font-normal text-gray-300 mt-4"
             variants={lineVariants} // Animate paragraph after heading lines
           >
-            A full-stack web developer and a UI/UX Designer working with people
-            who develop and innovate responsive and progressive web applications
-            that could help the community.
+            Specializing in user experience design and enterprise web
+            development. I create data-driven solutions that enhance user
+            engagement and deliver measurable business outcomes.
           </motion.p>
 
           {/* New Button Section */}
           <motion.div
-            className="flex space-x-4 mt-12 mb-4"
+            className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mt-8 lg:mt-12 mb-4"
             variants={lineVariants} // Animate buttons as a group
           >
             <ScrollLink
@@ -125,7 +143,7 @@ export default function Home() {
           </motion.div>
 
           <motion.ul
-            className="flex space-x-8 text-md font-medium"
+            className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm sm:text-md font-medium"
             variants={lineVariants} // Animate links as a group
           >
             <li>
@@ -160,6 +178,16 @@ export default function Home() {
             </li>
             <li>
               <a
+                href="https://www.behance.net/iitristan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-500 transition duration-200"
+              >
+                Behance
+              </a>
+            </li>
+            <li>
+              <a
                 href="mailto:isidro.earltristan@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -170,7 +198,7 @@ export default function Home() {
             </li>
           </motion.ul>
         </motion.div>
-        <div className="relative w-96 h-auto rounded-3xl overflow-hidden -mb-40">
+        <div className="relative w-full max-w-xs sm:max-w-sm lg:w-96 h-auto rounded-3xl overflow-hidden mb-0 lg:-mb-40">
           {/* Image Section */}
           <motion.img
             src="/DSC_0010.JPG"
@@ -195,7 +223,7 @@ export default function Home() {
           >
             {/* Heading */}
             <motion.h2
-              className="text-3xl font-bold text-white -mb-2"
+              className="text-2xl sm:text-3xl font-bold text-white -mb-2"
               variants={lineVariants} // Each line appears sequentially
             >
               Project Showcase
@@ -203,7 +231,7 @@ export default function Home() {
 
             {/* Description */}
             <motion.p
-              className="text-gray-400 text-lg -mt-4"
+              className="text-gray-400 text-base sm:text-lg -mt-4 px-4"
               variants={lineVariants} // Applies the same animation stagger
             >
               Some projects I’ve worked on, designed, and developed
@@ -242,7 +270,7 @@ export default function Home() {
       </div>
       <div className="bg-[#151515] py-10">
         <div className="max-w-screen-lg mx-auto text-center text-white">
-          <div className="flex flex-col sm:flex-row justify-around items-center gap-10">
+          <div className="flex flex-col sm:flex-row justify-around items-center gap-6 sm:gap-10 px-4">
             <div className="text-center">
               <img
                 src="/csa-logo.png"
@@ -259,7 +287,9 @@ export default function Home() {
                 alt="University of Santo Tomas Logo"
               />
               <p className="text-xl font-bold">University of Santo Tomas</p>
-              <p className="text-gray-400 text-sm">BSIT, 2025</p>
+              <p className="text-gray-400 text-sm">
+                Bachelor of Science in Information Technology, Cum Laude
+              </p>
             </div>
           </div>
         </div>
@@ -267,39 +297,49 @@ export default function Home() {
       <div id="about" className="bg-[#121212] py-10 text-white">
         {/* About Section */}
         <motion.div
-          className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center px-6"
+          className="max-w-screen-lg mx-auto flex flex-col lg:flex-row items-center px-4 sm:px-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
           <motion.div
-            className="flex-shrink-0 mb-6 md:mb-0 md:mr-8"
+            className="flex-shrink-0 mb-6 lg:mb-0 lg:mr-8"
             variants={itemVariants}
           >
             <img
-              src="/DSC00587.JPG" // Replace with your image path
-              alt="Your Image"
-              className="w-60 h-100 object-cover rounded-lg"
+              src="/IMG_2070.JPG"
+              alt="Tristan Isidro Professional Photo"
+              className="w-48 sm:w-56 lg:w-60 h-auto object-cover rounded-lg mx-auto"
             />
           </motion.div>
-          <motion.div className="text-left" variants={itemVariants}>
-            <h1 className="text-4xl font-bold mb-6 text-blue-400">About</h1>
-            <h2 className="text-2xl font-semibold mb-4">Hello!</h2>
-            <p className="text-lg text-gray-300 mb-6">
-              Hi! I'm Tristan, a fourth-year Information Technology student
-              specializing in Website and Mobile Development graduating from the
-              University of Santo Tomas. Experienced in UI/UX, I am passionate
-              about creating impactful, user-focused applications and am always
-              eager to learn and grow in my field.
+          <motion.div
+            className="text-center lg:text-left"
+            variants={itemVariants}
+          >
+            <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-blue-400">
+              About
+            </h1>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+              Professional Background
+            </h2>
+            <p className="text-base sm:text-lg text-gray-300 mb-6">
+              Information Technology graduate (Cum Laude) from University of
+              Santo Tomas with proven experience in UX design and full-stack
+              development. Delivered 200+ conversion-focused digital assets and
+              optimized enterprise applications during internship at Home Credit
+              Philippines.
             </p>
-            <h2 className="text-2xl font-semibold mb-4">My Goal</h2>
-            <p className="text-lg text-gray-300 mb-8">
-              I work as a full-stack web developer, collaborating with clients
-              and teams to create innovative applications that improve daily
-              lives and make technology more accessible.
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+              Value Proposition
+            </h2>
+            <p className="text-base sm:text-lg text-gray-300 mb-8">
+              I combine technical expertise with user-centered design to deliver
+              scalable solutions that drive business results. Ready to
+              contribute to product teams as a UX Designer or Full-Stack
+              Developer in enterprise environments.
             </p>
-            <div className="flex space-x-4 mb-10">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mb-10 justify-center lg:justify-start">
               <ScrollLink
                 to="projects"
                 smooth={true}
@@ -333,14 +373,14 @@ export default function Home() {
 
         {/* Work Experience Section */}
         <motion.div
-          className="max-w-screen-lg mx-auto mt-12 px-6"
+          className="max-w-screen-lg mx-auto mt-8 lg:mt-12 px-4 sm:px-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
           <motion.h2
-            className="text-2xl font-bold mb-8 text-blue-400"
+            className="text-xl sm:text-2xl font-bold mb-6 lg:mb-8 text-blue-400"
             variants={itemVariants}
           >
             Work Experience
@@ -350,12 +390,17 @@ export default function Home() {
           {[
             {
               title: "User Experience (UX) Intern – Home Credit Philippines",
-              period: "February 2025 – Present until June 2025",
+              period: "February 2025 – June 2025",
               details: [
-                "Edited and implemented images, banners, and other designs for the corporate website, adhering to design systems and brand guidelines.",
-                "Managed and created creative assets and designs for multiple internal teams.",
-                "Optimized website pages using Magnolia CMS to improve performance and user experience.",
-                "Conducted audits and generated reports on website design, functionality, and adherence to design principles.",
+                "Created 200+ conversion-focused banners (SKU-specific, generic, app downloads), contributing to increased click-through rates (CTR) and app installs",
+                "Audited 30+ UI components and optimized 15+ web pages using MS Clarity and Magnolia CMS; improving usability and user engagement based on behavioral insights.",
+                "Conducted audits across 30+ components and authored 5 detailed UX reports with actionable recommendations, several of which were approved for implementation",
+              ],
+              images: [
+                "/123123.png",
+                "/5214123.png",
+                "/5214124.png",
+                "/4b5ad32a-badb-4295-9b66-a52fbd8ebcc3.png",
               ],
             },
             {
@@ -367,6 +412,11 @@ export default function Home() {
                 "Managed daily task distribution for decentralized assistants, ensuring timely updates and follow-ups.",
                 "Provided multi-channel support via Discord tickets, email, and DMs; maintained documentation using Trello and Google Sheets.",
                 "Promoted HTF programs and HDAO initiatives through targeted social media outreach and Facebook advertising.",
+              ],
+              images: [
+                "/DD_BOT_Ads_20250318_172630_0002.png",
+                "/V2.png",
+                "/V3.png",
               ],
             },
           ].map((experience, index) => (
@@ -385,20 +435,48 @@ export default function Home() {
                   <li key={i}>{detail}</li>
                 ))}
               </ul>
+
+              {/* Work samples gallery */}
+              {experience.images && (
+                <div className="mt-4">
+                  <p className="text-sm text-gray-500 mb-3">Work Samples:</p>
+                  <div
+                    className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pb-2"
+                    onWheel={(e) => {
+                      e.currentTarget.scrollLeft += e.deltaY;
+                      e.preventDefault();
+                    }}
+                  >
+                    {experience.images.map((image, imgIndex) => (
+                      <div
+                        key={imgIndex}
+                        className="cursor-pointer flex-shrink-0"
+                        onClick={() => setSelectedImage(image)}
+                      >
+                        <img
+                          src={image}
+                          alt={`Work sample ${imgIndex + 1}`}
+                          className="h-28 object-contain rounded-lg hover:scale-105 transition-transform duration-200 border border-gray-600"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </motion.div>
 
         {/* Experience Section */}
         <motion.div
-          className="max-w-screen-lg mx-auto mt-12 px-6"
+          className="max-w-screen-lg mx-auto mt-8 lg:mt-12 px-4 sm:px-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
           <motion.h2
-            className="text-2xl font-bold mb-8 text-blue-400"
+            className="text-xl sm:text-2xl font-bold mb-6 lg:mb-8 text-blue-400"
             variants={itemVariants}
           >
             University Extracurricular & Leadership Experience
@@ -448,19 +526,19 @@ export default function Home() {
 
         {/* What I Do Section */}
         <motion.div
-          className="max-w-screen-lg mx-auto mt-16 px-6"
+          className="max-w-screen-lg mx-auto mt-12 lg:mt-16 px-4 sm:px-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
           <motion.h2
-            className="text-2xl font-bold mb-8 text-blue-400 text-right"
+            className="text-xl sm:text-2xl font-bold mb-6 lg:mb-8 text-blue-400 text-center lg:text-right"
             variants={itemVariants}
           >
             Experienced in
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 text-center lg:text-left">
             {[
               {
                 title: "Frontend Development",
@@ -504,29 +582,54 @@ export default function Home() {
 
         <MediaPortfolio />
 
+        {/* Image Modal */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center"
+            onClick={() => setSelectedImage(null)}
+          >
+            <div
+              className="relative max-w-sm sm:max-w-md lg:max-w-lg max-h-[60vh] p-2 sm:p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-70 p-2 rounded-full transition-colors duration-200"
+              >
+                <FiX size={20} />
+              </button>
+              <img
+                src={selectedImage}
+                alt="Work sample - Enlarged"
+                className="w-full h-full object-contain rounded-lg shadow-2xl"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Contact Section */}
         <motion.div
           id="contact"
-          className="max-w-screen-lg mx-auto text-center mt-16"
+          className="max-w-screen-lg mx-auto text-center mt-12 lg:mt-16 px-4 sm:px-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
           <motion.h2
-            className="text-2xl font-bold mb-4 text-blue-400"
+            className="text-xl sm:text-2xl font-bold mb-4 text-blue-400"
             variants={itemVariants}
           >
             Contact
           </motion.h2>
           <motion.p
-            className="text-md text-gray-400 mb-6"
+            className="text-sm sm:text-md text-gray-400 mb-6"
             variants={itemVariants}
           >
             Feel free to reach out to me on any of the platforms below:
           </motion.p>
           <motion.ul
-            className="flex justify-center space-x-8 text-md font-medium"
+            className="flex justify-center gap-6 sm:gap-8 text-md font-medium"
             variants={containerVariants} // Stagger child animations
           >
             <motion.li variants={itemVariants}>
